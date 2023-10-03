@@ -3,10 +3,18 @@ import apiClient from "../services/api-client";
 import { Text, background } from "@chakra-ui/react";
 import { CanceledError } from "axios";
 
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 interface FetchGamesResponse {
   count: number;
@@ -20,7 +28,10 @@ const useGames = () => {
     const controller = new AbortController();
     apiClient
       .get<FetchGamesResponse>("/games", { signal: controller.signal })
-      .then((res) => setGames(res.data.results))
+      .then((res) => {
+        setGames(res.data.results);
+        console.log(res.data);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
@@ -30,5 +41,4 @@ const useGames = () => {
 
   return { games, error };
 };
-
 export default useGames;

@@ -9,11 +9,11 @@ const NavBar = () => {
     <>
       <HStack justify="space-between" padding="10px">
         <Image src={logoreact} boxSize="60px" />
-        <Text>NavBar</Text>
+        <Text>SAI KESHAVI</Text>
+        <Text>SAKEETH THA</Text>
         <ColorModeSwitch />
       </HStack>
     </>
   );
 };
-
 export default NavBar;
