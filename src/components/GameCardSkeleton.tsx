@@ -14,11 +14,10 @@ import {
 
 const GameCardSkeleton = () => {
   return (
-    <Card borderRadius={10} overflow={"hidden"}>
-      <Skeleton width={"300px"} height={"200px"} />
+    <Card>
+      <Skeleton height={"200px"} />
       <CardBody>
         <SkeletonText />
-        <Heading fontSize={{ sm: "xl", lg: "2xl" }}></Heading>
       </CardBody>
     </Card>
   );
