@@ -1,14 +1,29 @@
 import React from "react";
 import useGenres from "../hooks/useGenres";
-import { Box, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Text,
+  Button,
+  Spinner,
+} from "@chakra-ui/react";
 import GameCardContainer from "./GameCardContainer";
 import Gamecard from "./Gamecard";
 import useData from "../hooks/useData";
 import { Genre } from "../hooks/useGenres";
 import getCroppedImageURL from "../services/Image-url";
 
-const GenereList = () => {
-  const { data } = useGenres();
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenereList = ({ onSelectGenre }: Props) => {
+  const { data, isLoading, error } = useGenres();
+  if (isLoading) return null;
+  if (isLoading) return <Spinner />;
   return (
     <List>
       {data.map((genre) => (
@@ -17,8 +32,12 @@ const GenereList = () => {
             <Image
               boxSize={"32px"}
               src={getCroppedImageURL(genre.image_background)}
+              borderRadius={5}
             />
-            <Text fontSize={"lg"}>{genre.name}</Text>
+            <Button variant={"link"} onClick={() => onSelectGenre(genre)}>
+              {genre.name}
+            </Button>
+            {/* <Text fontSize={"lg"}>{genre.name}</Text> */}
           </HStack>{" "}
         </ListItem>
       ))}
