@@ -9,9 +9,8 @@ const NavBar = () => {
     <>
       <HStack justify="space-between" padding="10px">
         <Image src={logoreact} boxSize="60px" />
-        <Text>SAI KESHAVI</Text>
-        <Text>SAKEETH THA</Text>
-        <ColorModeSwitch />
+        <Text fontSize={"2xl"}>Rawg Games</Text>
+         <ColorModeSwitch />
       </HStack>
     </>
   );

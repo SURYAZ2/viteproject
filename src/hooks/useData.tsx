@@ -22,8 +22,8 @@ const useData = <T,>(
       apiClient
         .get<FetchData<T>>(endpoint, {
           signal: controller.signal,
-          ...requestConfig,
-        })
+          ...requestConfig
+        }, )
         .then((res) => {
           setData(res.data.results);
           console.log(res.data);

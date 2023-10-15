@@ -11,6 +11,9 @@ import { Game } from "../hooks/useGames";
 import Platformcard from "./Platformcard";
 import Criticscore from "./Criticscore";
 import getCroppedImageURL from "../services/Image-url";
+
+
+
 interface Props {
   game: Game;
 }
