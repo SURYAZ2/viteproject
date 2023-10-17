@@ -8,7 +8,7 @@ interface Props {
   selectedGenre: Genre | null;
 }
 const Gamegrid = ({ selectedGenre }: Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre);
+  const { games: data, error, isLoading } = useGames(selectedGenre);
   const skelton = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -27,7 +27,7 @@ const Gamegrid = ({ selectedGenre }: Props) => {
           ))}
         {data.map((game) => (
           <GameCardContainer>
-            <Gamecard key={game.id} game={game} />
+            <Gamecard game={game} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
