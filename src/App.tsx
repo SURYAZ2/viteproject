@@ -1,7 +1,14 @@
 import { useState } from "react";
 
 import "./App.css";
-import { Button, ButtonGroup, Grid, GridItem, Show, Box } from "@chakra-ui/react";
+import {
+  Button,
+  ButtonGroup,
+  Grid,
+  GridItem,
+  Show,
+  Box,
+} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import Gamegrid from "./components/Gamegrid";
 import Resultcheck from "./components/Resultcheck";
@@ -10,10 +17,13 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
 function App() {
-  const [selectedGenre, setSelecetedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform , setSelectedPlatform]= useState <Platform| null>(null)
-  
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
   return (
     <Grid
       templateAreas={{
@@ -27,20 +37,29 @@ function App() {
         lg: "200px 1fr",
       }}
     >
-      <GridItem area="nav" >
+      <GridItem area="nav">
         <NavBar />
       </GridItem>
-     <Show above="lg">
+      <Show above="lg">
         <GridItem area="aside" padding={"5px"}>
-          <GenereList onSelectGenre={(genre) => setSelecetedGenre(genre)}  selectedGenre = {selectedGenre}/>
+          <GenereList
+            onSelectGenre={(genre) => {
+              setGameQuery({ ...gameQuery, genre });
+            }}
+            selectedGenre={gameQuery.genre}
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box mr={2} paddingLeft={850}>
-        <PlatformSelector onselectPlatform={(platform)=> setSelectedPlatform(platform)} selectedPlatform= {selectedPlatform}  />
+        <Box mr={2} paddingLeft={5}>
+          <PlatformSelector
+            onselectPlatform={(platform) => {
+              setGameQuery({ ...gameQuery, platform });
+            }}
+            selectedPlatform={gameQuery.platform}
+          />
         </Box>
-        <Gamegrid selectedGenre={selectedGenre} selectedPlatform = {selectedPlatform} />
-       
+        <Gamegrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );

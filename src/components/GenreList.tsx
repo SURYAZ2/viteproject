@@ -15,10 +15,11 @@ import Gamecard from "./Gamecard";
 import useData from "../hooks/useData";
 import { Genre } from "../hooks/useGenres";
 import getCroppedImageURL from "../services/Image-url";
+import { Platform } from "../hooks/useGames";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre : Genre | null;
+  selectedGenre: Genre | null;
 }
 
 const GenereList = ({ onSelectGenre, selectedGenre }: Props) => {
@@ -35,7 +36,11 @@ const GenereList = ({ onSelectGenre, selectedGenre }: Props) => {
               src={getCroppedImageURL(genre.image_background)}
               borderRadius={5}
             />
-            <Button fontWeight = {genre.id===selectedGenre?.id ? 'bold' : 'normal'} variant={"link"} onClick={() => onSelectGenre(genre)}>
+            <Button
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              variant={"link"}
+              onClick={() => onSelectGenre(genre)}
+            >
               {genre.name}
             </Button>
             {/* <Text fontSize={"lg"}>{genre.name}</Text> */}
