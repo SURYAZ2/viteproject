@@ -3,13 +3,15 @@ import React from "react";
 import logoreact from "../assets/logo.jpg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import apiClient from "../services/api-client";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   return (
     <>
-      <HStack justify="space-between" padding="10px">
+      <HStack padding="10px">
         <Image src={logoreact} boxSize="60px" />
-        <Text fontSize={"2xl"}>Rawg Games</Text>
+        <SearchInput />
+        {/* <Text fontSize={"2xl"}>Rawg Games</Text> */}
         <ColorModeSwitch />
       </HStack>
     </>

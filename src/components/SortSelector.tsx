@@ -20,11 +20,11 @@ interface Props {
 const SortSelector = ({ onselectSortOrder, selectedCategory }: Props) => {
   const sortorders = [
     { value: "", label: "Relavance" },
-    { value: "added", label: "Date added" },
+    { value: "-added", label: "Date added" },
     { value: "-released", label: "Date released" },
     { value: "created", label: "Date created" },
-    { value: "metacritic", label: "Popularity" },
-    { value: "rating", label: "By ratings" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "By ratings" },
   ];
   const SelectedCategory = sortorders.find(
     (item) => item.value == selectedCategory
