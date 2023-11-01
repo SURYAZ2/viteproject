@@ -39,6 +39,7 @@ const GenereList = ({ onSelectGenre, selectedGenre }: Props) => {
                 src={getCroppedImageURL(genre.image_background)}
                 borderRadius={5}
                 objectFit={"cover"}
+                onClick={() => console.log(data)}
               />
               <Button
                 whiteSpace={"normal"}
@@ -49,6 +50,7 @@ const GenereList = ({ onSelectGenre, selectedGenre }: Props) => {
               >
                 {genre.name}
               </Button>
+
               {/* <Text fontSize={"lg"}>{genre.name}</Text> */}
             </HStack>{" "}
           </ListItem>
