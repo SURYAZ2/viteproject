@@ -9,6 +9,7 @@ import {
   Text,
   Button,
   Spinner,
+  Heading,
 } from "@chakra-ui/react";
 import GameCardContainer from "./GameCardContainer";
 import Gamecard from "./Gamecard";
@@ -27,27 +28,33 @@ const GenereList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (isLoading) return null;
   if (isLoading) return <Spinner />;
   return (
-    <List>
-      {data.map((genre) => (
-        <ListItem key={genre.id} padding={"5px"}>
-          <HStack>
-            <Image
-              boxSize={"32px"}
-              src={getCroppedImageURL(genre.image_background)}
-              borderRadius={5}
-            />
-            <Button
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              variant={"link"}
-              onClick={() => onSelectGenre(genre)}
-            >
-              {genre.name}
-            </Button>
-            {/* <Text fontSize={"lg"}>{genre.name}</Text> */}
-          </HStack>{" "}
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading marginBottom={3}>{"Genres"}</Heading>
+      <List>
+        {data.map((genre) => (
+          <ListItem key={genre.id} padding={"5px"}>
+            <HStack>
+              <Image
+                boxSize={"32px"}
+                src={getCroppedImageURL(genre.image_background)}
+                borderRadius={5}
+                objectFit={"cover"}
+              />
+              <Button
+                whiteSpace={"normal"}
+                textAlign={"left"}
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                variant={"link"}
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </Button>
+              {/* <Text fontSize={"lg"}>{genre.name}</Text> */}
+            </HStack>{" "}
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
