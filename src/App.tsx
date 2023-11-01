@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import Gamegrid from "./components/Gamegrid";
-import Resultcheck from "./components/Resultcheck";
 import GenereList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
